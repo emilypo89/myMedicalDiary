@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS medicalHistory_db;
+CREATE DATABASE medicalHistory_db;
