@@ -1,13 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var ToDo = sequelize.define("ToDo", {
       toDo: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
       }
-    }
-  },
+    },
     // Here we'll pass a second "classMethods" object into the define method
     // This is for any additional configuration we want to give our models
     {
@@ -21,7 +21,6 @@ module.exports = function(sequelize, DataTypes) {
           });
         }
       }
-    }
-  );
+  });
   return ToDo;
 };

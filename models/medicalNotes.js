@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var medNotes = sequelize.define("medNotes", {
+  var MedNotes = sequelize.define("MedNotes", {
     // Giving the Author model a name of type STRING
     title: {
       type: DataTypes.STRING,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
         associate: function(models) {
           // An User (foreignKey) is required or a medNote can't be made
-          medNotes.belongsTo(models.User, {
+          MedNotes.belongsTo(models.User, {
             foreignKey: {
               allowNull: false
             }
@@ -24,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   );
-  return medNotes;
+  return MedNotes;
 };
