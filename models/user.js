@@ -1,10 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
       len: [1]
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -28,20 +29,19 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           // Associating User with the medNotes, todo, and doctors
-          User.hasMany(models.medNotes, {
+          User.hasMany(models.MedNotes, {
             onDelete: "cascade"
           });
 
-          User.hasMany(models.Todo, {
+          User.hasMany(models.ToDo, {
             onDelete: "cascade"
           });
 
-          User.hasMany(models.Doctors {
+          User.hasMany(models.Doctor, {
             onDelete: "cascade"
           });
         }
       }
-    }
-  );
+  });
   return User;
 };
