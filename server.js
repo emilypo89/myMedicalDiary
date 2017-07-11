@@ -38,13 +38,13 @@ app.set("view engine", "handlebars");
 // Routes - NEED TO ADD ROUTES!!!!
 // =============================================================
 // // Import routes and give the server access to them.
-// var routes = require("./controllers/burgers_controller.js");
+var routes = require("./routes/todoRoutes.js");
 
-// app.use("/", routes);
+app.use("/", routes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
