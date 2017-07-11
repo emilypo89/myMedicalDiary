@@ -1,7 +1,7 @@
 // Dependencies
 var express = require("express");
 var db = require("../models");
-console.log(db.ToDo);
+console.log(db.Doctor);
 
 // creating router
 var router = express.Router();
@@ -27,7 +27,7 @@ var router = express.Router();
         location: req.body.location,
         notes: req.body.notes
       }).then(function(data){
-        res.redirect("/");
+        res.redirect("/doctors");
       });
   });
 
@@ -46,7 +46,7 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/");
+          res.redirect("/doctors");
       });
   });
 // export routers
