@@ -6,7 +6,7 @@ console.log(db.ToDo);
 // creating router
 var router = express.Router();
   // get request to show the index.handlebars on the page 
-  // shows all of the to do items currently in the database on the page
+  // shows all of the doctors items currently in the database on the page
   router.get("/doctors", function(req, res) {
       db.Doctor.findAll({
       }).then(function(data) {
@@ -17,8 +17,8 @@ var router = express.Router();
 
 
 
-  // post request to add a new to do item to the list of to do items
-  // redirected back the the get request to show all the to do items, including the new one on the page
+  // post request to add a new to do item to the list of doctors
+  // redirected back the the get request to show all the doctors, including the new one on the page
   router.post("/doctors", function(req, res) {
       db.Doctor.create({
         name: req.body.name,
@@ -33,7 +33,7 @@ var router = express.Router();
 
 
 
-  // put request to update the page when the to do item changes
+  // put request to update the page when the doctor info changes
   router.put("/doctors/:id", function(req, res) {
       db.Doctor.update({
         name: req.body.name,
