@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     location: {
       type: DataTypes.STRING,
   },
+  title: {
+      type: DataTypes.STRING,
+  },
     notes: {
       type: DataTypes.STRING,
       allowNull: true
