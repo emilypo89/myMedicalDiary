@@ -38,7 +38,9 @@ app.set("view engine", "handlebars");
 // Routes - NEED TO ADD ROUTES!!!!
 // =============================================================
 // // Import routes and give the server access to them.
-var routes = require("./routes/userRoutes.js");
+
+var routes = require("./routes/appointmentRoutes.js");
+
 
 app.use("/", routes);
 

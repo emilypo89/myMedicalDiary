@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medical History</title>
+
+	<!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to CSS -->
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+	
+	<!-- Link to Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Navbar -->
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" id="navbarHeader" href="#">My Medical Diary</a>
+  </nav>
+
+  <div class="container">
+
+    
+    <!-- Start of Appointments -->
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h3 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Appointments
+        </a>
+        <span class="badge badge-pill badge-default">4</span>
+        <button type="submit" class="float-right addNew" data-toggle="modal" data-target="#newApptModal">+</button>
+      </h3>
+    </div>
+
+    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+        Appointments go here
+      </div>
+    </div>
+  </div>
+
+              <!-- Modal for Appointments -->
+                <div class="modal fade" id="newApptModal" tabindex="-1" role="dialog" aria-labelledby="newAppt" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="newMedicalNote">New Appointment</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="signup" action="/appointment" method="POST">
+  
+                          <div class="form-group">
+                            <label for="inputTime">Date</label>
+                            <input type="text" class="form-control" id="inputDate" placeholder="Date of Appointment">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="inputTime">Time</label>
+                            <input type="text" class="form-control" id="inputTime" placeholder="Time of Appointment">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location of Appointment">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="inputTitle">Title</label>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="inputNotes">Notes</label>
+                            <textarea class="form-control" rows="5" id="inputNotes" placeholder="Notes"></textarea>
+                          </div>
+
+                           <div class="form-group">
+                            <label for="exampleSelect1">Category</label>
+                            <select class="form-control" id="category">
+                              <option>Doctor Visit</option>
+                              <option>PT/OT/ST</option>
+                              <option>Personal</option>
+                              <option>Other</option> 
+                            </select>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>      
+                    </div>
+                  </div>
+                </div>
+          <!-- End New Appointment -->
+
+
+    <!-- Main Row -->
+    <div class="row">
+    
+      <!-- Welcome Info Column -->
+      <div class="col-md-6">
+        <div class="welcomeDiv">
+          <h1 class="welcome">Medical Notes</h1>
+          
+          <!-- Add New Note -->
+          <button type="submit" class="btn btn-default float-right" data-toggle="modal" data-target="#newNoteModal">Add A New Note</button>
+          
+              <!-- Modal -->
+                <div class="modal fade" id="newNoteModal" tabindex="-1" role="dialog" aria-labelledby="newNote" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="newMedicalNote">New Medical Note</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="signup" action="/note" method="POST">
+  
+                          <div class="form-group">
+                            <label for="inputTitle">Incident Title</label>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="Incident Title">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location of Incident">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="inputIncident">Incident</label>
+                            <textarea class="form-control" rows="5" id="inputIncident" placeholder="Description of Incident"></textarea>
+                          </div>
+
+                           <div class="form-group">
+                            <label for="exampleSelect1">Category</label>
+                            <select class="form-control" id="category">
+                              <option>Hospital</option>
+                              <option>Check Up</option>
+                              <option>Follow Up Visit</option>
+                              <option>Other</option> 
+                            </select>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>      
+                    </div>
+                  </div>
+                </div>
+          <!-- End New Note -->
+
+        </div>
+      </div>      
+
+      <!-- Sign Up Column -->
+      <div class="col-md-6">
+      	<div class="welcomeDiv">
+      	<h1 class="signUpTitle">To-Do List</h1>
+      	
+          
+          <form class="form-inline" action="/todo" method="POST">
+          <div class="form-group" id="toDoDiv"> 
+            
+              <label class="sr-only" for="newToDo">New To Do</label>
+              <input class="form-control" type="text" placeholder="New To-Do" id="newToDo">
+              </div>
+              <button type="submit" class="btn btn-default">Add</button>
+            </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; </span>
+    </div>
+  </footer>
+  
+
+</body>
+</html>
+
+<script type="text/javascript"></script>

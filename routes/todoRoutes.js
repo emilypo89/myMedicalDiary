@@ -23,7 +23,7 @@ var router = express.Router();
       db.ToDo.create({
         toDo: req.body.toDo
       }).then(function(data){
-        res.redirect("/");
+        res.redirect("/todo");
       });
   });
 
@@ -38,7 +38,7 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/");
+          res.redirect("/todo");
       });
   });
 // export routers

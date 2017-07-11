@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Medical History</title>
 
-	<!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Link to CSS -->
-	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-	
-	<!-- Link to Google fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet">
-</head>
-
-<body>
-	<!-- Navbar -->
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,27 +10,36 @@
   <div class="container">
 
     
-    <!-- Start of Appointments -->
+    <!-- APPOINTMENT section -->
     <div id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="card">
-    <div class="card-header" role="tab" id="headingOne">
-      <h3 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Appointments
-        </a>
-        <span class="badge badge-pill badge-default">4</span>
-        <button type="submit" class="float-right addNew" data-toggle="modal" data-target="#newApptModal">+</button>
-      </h3>
-    </div>
+		  <div class="card">
+		    <div class="card-header" role="tab" id="headingOne">
+		      <h3 class="mb-0">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+		          Appointments
+		        </a>
+		        <span class="badge badge-pill badge-default">4</span>
+		        <button type="submit" class="float-right addNew" data-toggle="modal" data-target="#newApptModal">+</button>
+		      </h3>
+		    </div>
 
-    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="card-block">
-        Appointments go here
-      </div>
-    </div>
-  </div>
-
-              <!-- Modal for Appointments -->
+		    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="card-block">
+		        <ul>
+							{{#each date}}
+                {{#each appointment}}
+                  <li class="toDoList">
+                    <pre>{{this.time}} {{this.title}}</pre><br>
+                    <pre>{{this.location}}</pre><br>
+                    <p><pre>{{this.notes}}</pre></p>
+                  </li>
+                {{/each}}
+              {{/each}} 									  
+						</ul>
+		      </div>
+		    </div>
+		  </div>
+              <!-- Modal for APPOINTMENTS -->
                 <div class="modal fade" id="newApptModal" tabindex="-1" role="dialog" aria-labelledby="newAppt" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -62,46 +50,46 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form class="signup" action="/appointment" method="POST">
+                        <form class="signup" action="/appointments" method="POST">
   
                           <div class="form-group">
                             <label for="inputTime">Date</label>
-                            <input type="text" class="form-control" id="inputDate" placeholder="Date of Appointment">
+                            <input type="text" class="form-control" id="inputDate" placeholder="Date of Appointment" name="date">
                           </div>
 
                           <div class="form-group">
                             <label for="inputTime">Time</label>
-                            <input type="text" class="form-control" id="inputTime" placeholder="Time of Appointment">
+                            <input type="text" class="form-control" id="inputTime" placeholder="Time of Appointment" name="time">
                           </div>
                           
                           <div class="form-group">
                             <label for="inputLocation">Location</label>
-                            <input type="text" class="form-control" id="inputLocation" placeholder="Location of Appointment">
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location of Appointment" name="location">
                           </div>
 
                           <div class="form-group">
                             <label for="inputTitle">Title</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                            <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title">
                           </div>
 
                            <div class="form-group">
                             <label for="inputNotes">Notes</label>
-                            <textarea class="form-control" rows="5" id="inputNotes" placeholder="Notes"></textarea>
+                            <textarea class="form-control" rows="5" id="inputNotes" placeholder="Notes" name="notes"></textarea>
                           </div>
 
                            <div class="form-group">
                             <label for="exampleSelect1">Category</label>
-                            <select class="form-control" id="category">
-                              <option>Doctor Visit</option>
-                              <option>PT/OT/ST</option>
-                              <option>Personal</option>
-                              <option>Other</option> 
+                            <select class="form-control" id="category" name="category">
+                              <option value="Doctor Visit">Doctor Visit</option>
+                              <option value="PT/OT/ST">PT/OT/ST</option>
+                              <option value="Personal">Personal</option>
+                              <option value="Other">Other</option> 
                             </select>
                           </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                           </div>
                         </form>      
                     </div>
@@ -113,15 +101,43 @@
     <!-- Main Row -->
     <div class="row">
     
-      <!-- Welcome Info Column -->
+      <!-- Medical NOTE section -->
       <div class="col-md-6">
         <div class="welcomeDiv">
           <h1 class="welcome">Medical Notes</h1>
+
+										<!-- NOTE handlebars -->
+          					<ul>
+										  {{#each Note}}
+										      <li class="noteList">
+										      	<div id="accordion" role="tablist" aria-multiselectable="true">
+														  <div class="card">
+														    <div class="card-header" role="tab" id="headingOne">
+														      <h3 class="mb-0">
+														        <a data-toggle="collapse" data-parent="#accordion" href="#{{this.id}}" aria-expanded="false" aria-controls="collapseOne">
+														          {{this.title}}
+														        </a>
+														      </h3>
+														      <h5>{{this.date}} {{this.time}}</h5>
+														      <h5>{{this.category}}
+														    </div>
+
+														    <div id="{{this.id}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+														      <div class="card-block">
+														        {{this.incident}}
+														      </div>
+														    </div>
+														  </div>
+										        
+										      </li>
+										  {{/each}}										  
+										</ul>
+ 
           
-          <!-- Add New Note -->
+          <!-- Add New NOTE -->
           <button type="submit" class="btn btn-default float-right" data-toggle="modal" data-target="#newNoteModal">Add A New Note</button>
           
-              <!-- Modal -->
+              <!-- NOTE Modal -->
                 <div class="modal fade" id="newNoteModal" tabindex="-1" role="dialog" aria-labelledby="newNote" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -172,20 +188,28 @@
         </div>
       </div>      
 
-      <!-- Sign Up Column -->
+      <!-- ToDo Column -->
       <div class="col-md-6">
       	<div class="welcomeDiv">
       	<h1 class="signUpTitle">To-Do List</h1>
       	
-          
+        	<!-- TODO Form to add new to-do -->  
           <form class="form-inline" action="/todo" method="POST">
           <div class="form-group" id="toDoDiv"> 
-            
               <label class="sr-only" for="newToDo">New To Do</label>
-              <input class="form-control" type="text" placeholder="New To-Do" id="newToDo">
+              <input class="form-control" type="text" placeholder="New To-Do" id="newToDo" name="toDo">
               </div>
               <button type="submit" class="btn btn-default">Add</button>
             </form>
+				<!-- TODO Handlebars -->
+          <ul>
+            {{#each todo}}
+                <li class="toDoList">
+                  {{this.toDo}}
+                </li>
+            {{/each}}                     
+          </ul>			
+
           </div>
 
           </div>
@@ -194,9 +218,11 @@
     </div>
   </div>
 
-<footer>Test</footer>
+</div>
+</div>
 
-</body>
-</html>
-
-<script type="text/javascript"></script>
+<footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; </span>
+    </div>
+  </footer>
