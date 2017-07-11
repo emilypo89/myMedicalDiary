@@ -10,12 +10,17 @@ var router = express.Router();
   router.get("/appointments", function(req, res) {
       db.Appointment.findAll({
         // include: [{model: db.Doctor}]
+        order: [
+    // Will escape username and validate DESC against a list of valid direction parameters
+        ['date']
+        ]
       }).then(function(data) {
           console.log(data)    
         var displayAppointment = {
         appointment: data,  
         date: data.date
       }
+        console.log(displayAppointment);
        res.render("index", displayAppointment);
       });
   });
@@ -31,6 +36,7 @@ var router = express.Router();
         time: req.body.time,
         category: req.body.category,
         location: req.body.location,
+        title: req.body.title,
         notes: req.body.notes
       }).then(function(data){
         res.redirect("/appointments");
@@ -47,6 +53,7 @@ var router = express.Router();
         time: req.body.time,
         category: req.body.category,
         location: req.body.location,
+        title: req.body.title,
         notes: req.body.notes
       }, {
         where: {

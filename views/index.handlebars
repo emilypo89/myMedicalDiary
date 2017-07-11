@@ -26,15 +26,17 @@
 		    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
 		      <div class="card-block">
 		        <ul>
-							{{#each date}}
+            <li class="toDoList">                
                 {{#each appointment}}
-                  <li class="toDoList">
-                    <pre>{{this.time}} {{this.title}}</pre><br>
-                    <pre>{{this.location}}</pre><br>
-                    <p><pre>{{this.notes}}</pre></p>
-                  </li>
-                {{/each}}
-              {{/each}} 									  
+                  <li>{{this.title}}</li><br>
+                  <li>{{this.date}}</li><br>
+                  <li>{{this.time}}</li><br>
+                  <li>{{this.location}}</li><br>
+                  <li>{{this.category}}</li><br>
+                  <li>{{this.notes}}</li>
+                </li>
+              {{/each}}
+              </li> 									  
 						</ul>
 		      </div>
 		    </div>
@@ -119,7 +121,7 @@
 														        </a>
 														      </h3>
 														      <h5>{{this.date}} {{this.time}}</h5>
-														      <h5>{{this.category}}
+														      <h5>{{this.category}}</h5>
 														    </div>
 
 														    <div id="{{this.id}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
