@@ -1,0 +1,142 @@
+/*Main Styling for all pages*/
+html{
+	position: relative;
+	min-height: 100%;
+}
+body {
+	background-image: url("https://ak2.picdn.net/shutterstock/videos/14611825/thumb/1.jpg");
+	background-size: cover;
+	font-family: 'Josefin Slab', serif;
+	color: #003b46;
+	margin-bottom: 60px;
+}
+.container{
+	min-height: 100%;
+	margin-bottom: -20px;
+}
+nav#navbar{
+	background-color: rgba(102, 165, 173, 0.9);
+	margin-bottom: 2%;
+}
+#navbarHeader{
+	color:#003b46;
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 3.5em;
+}
+
+/*Main - signUp.html & signIn.html*/
+/*Form and Div Backgrounds*/
+form.signup, .signin, #footer {
+	background-color: rgba(196,223,230,0.8);
+	padding: 10%;
+	border-radius: 5px;
+}
+.welcomeDiv{
+	background-color: rgba(196,223,230,0.8);
+	padding-top: 10%;
+	padding-right: 10%;
+	padding-left: 10%;
+	padding-bottom: 2%;
+	border-radius: 5px;
+}
+/*Headers*/
+h1.signUpTitle, h1.welcome, h1.signInTitle {
+	font-family: 'Fredericka the Great', cursive;
+	margin-top: 0px;
+}
+/*Labels for Sign Up Inputs*/
+.signUpLabel, .signInLabel{
+	font-size: 1.5em;
+}
+/*Placeholders for Sign Up*/
+#inputName, #inputEmail, #inputPassword{
+	font-family: 'Josefin Slab', serif;
+}
+/*Buttons*/
+#signUpButton, #logInButton, #newNoteButton, #addToDo, #addNewDoctor, #cancelButton, #newDoctorSubmit{
+	background-image: none;
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
+	font-size: 18px;	
+}
+/*Exiting Members Line*/
+#existMem{
+	font-size: 1.5em;
+	float: right;
+	color: #003b46;
+}
+
+/*Footer*/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px; 
+  background-color: rgba(102, 165, 173, 0.9);
+	font-family: 'Josefin Slab', serif;
+	font-size: 18px;
+	text-align: center;
+}
+
+ul {
+
+	list-style-type: none;
+	padding: 0px;
+	
+}
+
+li {
+
+	margin: 5px;
+	background-color: rgba(0,0,0,0.8);
+	padding: 20px;
+	border-radius: 5px;
+}
+
+form.signup, .welcomeDiv {
+
+	background-color: rgba(196,223,230,0.8);
+	padding: 10%;
+	border-radius: 5px;
+}
+
+input#newToDo {
+	width: 100%;
+}
+
+div#toDoDiv {
+	width: 80%;
+}
+
+div.card-header {
+	font-family: 'Fredericka the Great', cursive;
+	background-color: rgba(196,223,230,0.8);
+
+}
+
+div.card {
+	background-color: rgba(255, 255, 255, 0);
+	margin-bottom: 2%;
+}
+
+div.card-block{
+
+	background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+span.badge {
+	background-color: #ad6686;
+}
+
+button.addNew {
+
+	border: 0px;
+	background-color: rgba(255, 255, 255, 0);
+
+}
+
+button.addNew:hover {
+	color: white;
+}

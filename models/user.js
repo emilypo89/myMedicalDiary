@@ -22,8 +22,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     } 
   },
-    // Here we'll pass a second "classMethods" object into the define method
-    // This is for any additional configuration we want to give our models
     {
       // We're saying that we want our User to have medNotes, todo, doctor
       classMethods: {
@@ -38,6 +36,10 @@ module.exports = function(sequelize, DataTypes) {
           });
 
           User.hasMany(models.Doctor, {
+            onDelete: "cascade"
+          });
+
+          User.hasMany(models.Appointment, {
             onDelete: "cascade"
           });
         }

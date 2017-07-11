@@ -31,8 +31,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }  
     },
-    // Here we'll pass a second "classMethods" object into the define method
-    // This is for any additional configuration we want to give our models
     {
       // We're saying that we want our Author to have Posts
       classMethods: {
@@ -40,6 +38,16 @@ module.exports = function(sequelize, DataTypes) {
           // Associating Author with Posts
           // When an Author is deleted, also delete any associated Posts
           Doctor.belongsTo(models.User, {
+            foreignKey: {
+              allowNull: false
+            }
+          });
+
+          Doctor.hasMany(models.Appointment, {
+            onDelete: "cascade"
+          });
+
+          Doctor.hasMany(models.MedNotes, {
             onDelete: "cascade"
           });
         }
