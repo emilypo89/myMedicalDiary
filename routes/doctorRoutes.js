@@ -11,7 +11,7 @@ var router = express.Router();
       db.Doctor.findAll({
       }).then(function(data) {
           console.log(data)    
-       res.render("index", {doctor: data});
+       res.render("doctors", {doctor: data});
       });
   });
 
