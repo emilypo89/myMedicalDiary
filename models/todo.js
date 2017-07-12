@@ -22,7 +22,13 @@ module.exports = function(sequelize, DataTypes) {
     //   }
   });
   ToDo.associate = function(models){
-    ToDo.belongsTo(models.User)
+    ToDo.belongsTo(models.User
+    //   , {
+    //   foreignKey: {
+    //     allowNull: false
+    //    } 
+    // }
+    )
   }
 
 

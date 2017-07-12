@@ -1,0 +1,103 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medical History</title>
+
+	<!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to CSS -->
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+	
+	<!-- Link to Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet">
+
+  <!-- Link to Font Awesome -->
+  <script src="https://use.fontawesome.com/5015dc676a.js"></script>
+</head>
+
+<body> --}}
+
+  <header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+      <a class="navbar-brand" id="navbarHeader" href="#">My Medical Diary</a>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown" class="dropdownMenu" id="dropdownLi">
+            <a class="nav-link" href="#" id="menu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" id="dropdownMenu" aria-labelledby="menu1">
+              <a class="dropdown-item" href="#">Home</a>
+              <a class="dropdown-item" href="#">My Doctors</a>
+              <hr>
+              <a class="dropdown-item" href="#">Log Out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- Main Row -->
+    <div class="row">
+    
+      <!-- Welcome Info Column -->
+      <div class="col-md-6">
+        <div class="welcomeDiv">
+          <h1 class="welcome">Welcome!</h1>
+          <br>
+          <h3 class="welcomeInfo">
+            <p>Welcome to My Medical Diary, the application that allows you to log everything you need in order to live a happy and healthy life. 
+            </p><p>
+            Sign up today and instantly have the ability to track all of your medical incidents and appointment notes as well as make helpful to do lists and store the contact information of all of your doctors with ease!
+            </p>
+          </h3>
+        </div>
+      </div>      
+
+      <!-- Sign Up Column -->
+      <div class="col-md-6">
+      	<form class="signup" action="/users" method="POST">
+      	<h1 class="signUpTitle">Sign Up</h1>
+      	<div class="form-group">
+          <label for="inputName" class="signUpLabel">Name</label>
+          <input type="text" class="form-control" id="inputName" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="signUpLabel">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="signUpLabel">Password</label>
+          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-secondary float-right" id="signUpButton">Sign Up</button>
+        </div>
+        <br><br>
+      
+        <span id="existMem">Already a member? <a href="/login">Login Here</a>
+        </span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; </span>
+    </div>
+  </footer>
+
+</body>
+</html>
