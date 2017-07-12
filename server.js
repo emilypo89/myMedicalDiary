@@ -39,7 +39,7 @@ app.set("view engine", "handlebars");
 // =============================================================
 // // Import routes and give the server access to them.
 
-var routes = require("./routes/appointmentRoutes.js");
+var routes = require("./routes/doctorRoutes.js");
 
 
 app.use("/", routes);
