@@ -62,6 +62,7 @@ var router = express.Router();
       }).then(function(data) {
           res.redirect("/appointments");
       });
+   });    
 
         // delete request to delete an appointment
   router.delete("/appointment/:id", function(req, res) {

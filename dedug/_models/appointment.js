@@ -19,22 +19,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     }  
-  }
-  //   {
-  //     // We're saying that we want our user to have appointments
-  //     classMethods: {
-  //       associate: function(models) {
-  //         Appointment.belongsTo(models.User, {
-  //           foreignKey: {
-  //             allowNull: false
-  //           }
-  //         });
-  //       }
-  //     }
-  // }
-  );
-  Appointment.associate = function(models){
-    Appointment.belongsTo(models.User)
-  }
+  },
+    {
+      // We're saying that we want our user to have appointments
+      classMethods: {
+        associate: function(models) {
+          Appointment.belongsTo(models.User, {
+            foreignKey: {
+              allowNull: false
+            }
+          });
+        }
+      }
+  });
   return Appointment;
 };
