@@ -1,0 +1,232 @@
+{{!-- {{#each user}} --}}
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" id="navbarHeader" href="#">My Medical Diary</a>
+  </nav>
+
+  <div class="container">
+
+    
+    <!-- APPOINTMENT section -->
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="card">
+		    <div class="card-header" role="tab" id="headingOne">
+		      <h3 class="mb-0">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+		          Appointments
+		        </a>
+		        <span class="badge badge-pill badge-default">4</span>
+		        <button type="submit" class="float-right addNew" data-toggle="modal" data-target="#newApptModal">+</button>
+		      </h3>
+		    </div>
+
+		    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="card-block">
+		        <ul>
+            <li class="toDoList">                
+                {{#each user.Appointments}}
+                  <li>{{this.title}}</li><br>
+                  <li>{{this.date}}</li><br>
+                  <li>{{this.time}}</li><br>
+                  <li>{{this.location}}</li><br>
+                  <li>{{this.category}}</li><br>
+                  <li>{{this.notes}}</li>
+                </li>
+              {{/each}}
+              </li> 									  
+						</ul>
+		      </div>
+		    </div>
+		  </div>
+              <!-- Modal for APPOINTMENTS -->
+                <div class="modal fade" id="newApptModal" tabindex="-1" role="dialog" aria-labelledby="newAppt" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="newMedicalNote">New Appointment</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="signup" action="/appointments/{{user.id}}" method="POST">
+  
+                          <div class="form-group">
+                            <label for="inputTime">Date</label>
+                            <input type="text" class="form-control" id="inputDate" placeholder="Date of Appointment" name="date">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="inputTime">Time</label>
+                            <input type="text" class="form-control" id="inputTime" placeholder="Time of Appointment" name="time">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location of Appointment" name="location">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="inputTitle">Title</label>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="inputNotes">Notes</label>
+                            <textarea class="form-control" rows="5" id="inputNotes" placeholder="Notes" name="notes"></textarea>
+                          </div>
+
+                           <div class="form-group">
+                            <label for="exampleSelect1">Category</label>
+                            <select class="form-control" id="category" name="category">
+                              <option value="Doctor Visit">Doctor Visit</option>
+                              <option value="PT/OT/ST">PT/OT/ST</option>
+                              <option value="Personal">Personal</option>
+                              <option value="Other">Other</option> 
+                            </select>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>      
+                    </div>
+                  </div>
+                </div>
+          <!-- End New Appointment -->
+
+
+    <!-- Main Row -->
+    <div class="row">
+    
+      <!-- Medical NOTE section -->
+      <div class="col-md-6">
+        <div class="welcomeDiv">
+          <h1 class="welcome">Medical Notes</h1>
+
+										<!-- NOTE handlebars -->
+          					<ul>
+										  {{#each user.MedNotes}}
+										      <li class="noteList">
+										      	<div id="accordion" role="tablist" aria-multiselectable="true">
+														  <div class="card">
+														    <div class="card-header" role="tab" id="headingOne">
+														      <h3 class="mb-0">
+														        <a data-toggle="collapse" data-parent="#accordion" href="#{{this.id}}" aria-expanded="false" aria-controls="collapseOne">
+														          {{this.title}}
+														        </a>
+														      </h3>
+														      <h5>{{this.date}} {{this.time}}</h5>
+														      <h5>{{this.category}}</h5>
+														    </div>
+
+														    <div id="{{this.id}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+														      <div class="card-block">
+														        {{this.incident}}
+														      </div>
+														    </div>
+														  </div>
+										        
+										      </li>
+										  {{/each}}										  
+										</ul>
+ 
+          
+          <!-- Add New NOTE -->
+          <button type="submit" class="btn btn-default float-right" data-toggle="modal" data-target="#newNoteModal">Add A New Note</button>
+          
+              <!-- NOTE Modal -->
+                <div class="modal fade" id="newNoteModal" tabindex="-1" role="dialog" aria-labelledby="newNote" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="newMedicalNote">New Medical Note</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="signup" action="/medicalNotes/{{user.id}}" method="POST">
+  
+                          <div class="form-group">
+                            <label for="inputTitle">Incident Title</label>
+                            <input type="text" class="form-control" name="title" id="inputTitle" placeholder="Incident Title">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" name="location" id="inputLocation" placeholder="Location of Incident">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="inputIncident">Incident</label>
+                            <textarea class="form-control" name="incident" rows="5" id="inputIncident" placeholder="Description of Incident"></textarea>
+                          </div>
+
+                           <div class="form-group">
+                            <label for="exampleSelect1">Category</label>
+                            <select class="form-control" name="category" id="category">
+                              <option>Hospital</option>
+                              <option>Check Up</option>
+                              <option>Follow Up Visit</option>
+                              <option>Other</option> 
+                            </select>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>      
+                    </div>
+                  </div>
+                </div>
+          <!-- End New Note -->
+
+        </div>
+      </div>      
+
+      <!-- ToDo Column -->
+      <div class="col-md-6">
+      	<div class="welcomeDiv">
+      	<h1 class="signUpTitle">To-Do List</h1>
+      	 
+        	<!-- TODO Form to add new to-do -->  
+          <form class="form-inline" action="/todo/{{user.id}}" method="POST">
+          <div class="form-group" id="toDoDiv"> 
+              <label class="sr-only" for="newToDo">New To Do</label>
+              <input class="form-control" type="text" placeholder="New To-Do" id="newToDo" name="toDo">
+              </div>
+              <button type="submit" class="btn btn-default">Add</button>
+            </form>
+				<!-- TODO Handlebars -->
+          <ul>
+            {{#each user.ToDos}}
+                <li class="toDoList">
+                  {{this.toDo}}
+                </li>
+            {{/each}}                     
+          </ul>			
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; </span>
+    </div>
+  </footer>
+
+  {{!-- {{/each}} --}}

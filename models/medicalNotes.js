@@ -22,9 +22,14 @@ module.exports = function(sequelize, DataTypes) {
   //     }
     });
 
+
   MedNotes.associate = function(models){
-    MedNotes.belongsTo(models.User)
-  }
+    MedNotes.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }  
 
   return MedNotes;
 };

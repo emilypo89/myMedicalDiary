@@ -6,7 +6,9 @@ html{
 body {
 	background-image: url("https://ak2.picdn.net/shutterstock/videos/14611825/thumb/1.jpg");
 	background-size: cover;
+	background-position: fixed;
 	font-family: 'Josefin Slab', serif;
+/*	font-size: 18px;*/
 	color: #003b46;
 	margin-bottom: 60px;
 }
@@ -14,17 +16,33 @@ body {
 	min-height: 100%;
 	margin-bottom: -20px;
 }
+
+/*Navbar*/
+/*Main Navbar Content*/
 nav#navbar{
 	background-color: rgba(102, 165, 173, 0.9);
 	margin-bottom: 2%;
 }
+/*Navbar Header*/
 #navbarHeader{
 	color:#003b46;
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 3.5em;
 }
+/*Dropdown Menu Button*/
+#menu1{
+	background-image: none;
+	background-color: rgba(102, 165, 173, 1);
+}
+#dropdownLi{	
+	padding: 0;
+}
+/*Dropdown Menu List Items*/
+.dropdown-item{
+	font-size: 1.25em;
+	font-family: 'Fredericka the Great', cursive;
+}
 
-/*Main - signUp.html & signIn.html*/
 /*Form and Div Backgrounds*/
 form.signup, .signin, #footer {
 	background-color: rgba(196,223,230,0.8);
@@ -39,28 +57,74 @@ form.signup, .signin, #footer {
 	padding-bottom: 2%;
 	border-radius: 5px;
 }
+form.signup, .welcomeDiv {
+	background-color: rgba(196,223,230,0.8);
+	padding: 10%;
+	border-radius: 5px;
+}
+
 /*Headers*/
 h1.signUpTitle, h1.welcome, h1.signInTitle {
 	font-family: 'Fredericka the Great', cursive;
 	margin-top: 0px;
 }
+
 /*Labels for Sign Up Inputs*/
 .signUpLabel, .signInLabel{
 	font-size: 1.5em;
 }
-/*Placeholders for Sign Up*/
-#inputName, #inputEmail, #inputPassword{
+/*Placeholders*/
+input.placeholder, textarea.placeholder, select.placeholder{
 	font-family: 'Josefin Slab', serif;
+	font size: 16px;
 }
+
 /*Buttons*/
-#signUpButton, #logInButton, #newNoteButton, #addToDo, #addNewDoctor, #cancelButton, #newDoctorSubmit{
+button.regButton{
 	background-image: none;
 	font-family: 'Josefin Slab', serif;
 	font-weight: bold;
 	font-size: 18px;	
 }
-/*Exiting Members Line*/
-#existMem{
+button.toDoButtons{
+	background-image: none;
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: 4px;
+}
+button.cancelButton{
+	background-image: none;
+	background-color: rgba(233, 236, 241, 0.9);
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+/*Button for adding a new Appointment*/
+button.addNew{
+	border: 0px;
+	background-color: rgba(255, 255, 255, 0);
+}
+button.addNew:hover {
+	color: white;
+}
+/*Update and Delete Icon Buttons*/
+button.standardButton{
+	border: 0px;
+	background-color: rgba(255,255,255,0);
+	margin-left: 4px;
+}
+
+/*To Do Icon Buttons*/
+button.updateNote{
+	border: 0px;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+
+/*Member Question*/
+span.memberQuestion{
 	font-size: 1.5em;
 	float: right;
 	color: #003b46;
@@ -79,64 +143,56 @@ h1.signUpTitle, h1.welcome, h1.signInTitle {
 	text-align: center;
 }
 
+/*General UL items*/
 ul {
-
 	list-style-type: none;
 	padding: 0px;
-	
 }
-
+/*General LI*/
 li {
-
 	margin: 5px;
-	/*background-color: rgba(0,0,0,0.8);*/
+	background-color: rgba(255,255,255,0);
 	padding: 20px;
 	border-radius: 5px;
 }
 
-form.signup, .welcomeDiv {
-
-	background-color: rgba(196,223,230,0.8);
-	padding: 10%;
-	border-radius: 5px;
-}
-
-input#newToDo {
-	width: 100%;
-}
-
-div#toDoDiv {
-	width: 80%;
-}
-
+/*Appointments Headers*/
 div.card-header {
 	font-family: 'Fredericka the Great', cursive;
 	background-color: rgba(196,223,230,0.8);
-
 }
-
+/*Appointments Body*/
 div.card {
 	background-color: rgba(255, 255, 255, 0);
 	margin-bottom: 2%;
 }
-
-div.card-block{
-
-	background-color: rgba(255, 255, 255, 0.8);
-
-}
-
 span.badge {
 	background-color: #ad6686;
 }
 
-button.addNew {
-
+/*Medical Note Header*/
+div.noteItem {
+	background-color: rgba(255, 255, 255, 1);
 	border: 0px;
-	background-color: rgba(255, 255, 255, 0);
-
+}
+/*Medical Note Body*/
+div.card-block{
+	background-color: rgba(233, 236, 241, 0.9);
+	
 }
 
-button.addNew:hover {
-	color: white;
+/*Input New ToDo Span Lengths*/
+input#newToDo {
+	width: 100%;
 }
+div#toDoDiv {
+	width: 80%;
+}
+/*To Do List Items*/
+#toDoItems{
+	width: 80%;
+	margin: 0;
+	padding: 8px;
+}
+
+

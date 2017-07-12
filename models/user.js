@@ -48,15 +48,17 @@ module.exports = function(sequelize, DataTypes) {
   );
   User.associate = function(models){
     User.hasMany(models.Appointment)
-  }
-
-  User.associate = function(models){
     User.hasMany(models.ToDo)
-  }
-
-  User.associate = function(models){
     User.hasMany(models.MedNotes)
   }
+
+  // User.associate = function(models){
+  //   User.hasMany(models.ToDo)
+  // }
+
+  // User.associate = function(models){
+  //   User.hasMany(models.MedNotes)
+  // }
 
   // User.associate = function(models){
   //   User.hasMany(models.Doctor)
