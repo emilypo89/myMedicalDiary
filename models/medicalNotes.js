@@ -7,26 +7,24 @@ module.exports = function(sequelize, DataTypes) {
     },
     location: DataTypes.STRING,
     content: DataTypes.TEXT,
-  },
-    {
-      // We're saying that we want our User to have medNotes
-    classMethods: {
-        associate: function(models) {
-          // An User (foreignKey) is required or a medNote can't be made
-          MedNotes.belongsTo(models.User, {
-            foreignKey: {
-              allowNull: false
-            }
-          });
+  // },
+  //   {
+  //     // We're saying that we want our User to have medNotes
+  //   classMethods: {
+  //       associate: function(models) {
+  //         // An User (foreignKey) is required or a medNote can't be made
+  //         MedNotes.belongsTo(models.User, {
+  //           foreignKey: {
+  //             allowNull: false
+  //           }
+  //         });
+  //       }
+  //     }
+    });
 
-          MedNotes.belongsTo(models.Doctor, {
-            foreignKey: {
-              allowNull: false
-            }
-          });
-        }
-      }
-    }
-  );
+  MedNotes.associate = function(models){
+    MedNotes.belongsTo(models.User)
+  }
+
   return MedNotes;
 };

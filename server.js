@@ -7,7 +7,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-// var sequelize = require("sequelize");
 
 // Sets up the Express App
 // =============================================================
@@ -39,7 +38,7 @@ app.set("view engine", "handlebars");
 // =============================================================
 // // Import routes and give the server access to them.
 
-var routes = require("./routes/doctorRoutes.js");
+var routes = require("./routes/mmdRoutes.js");
 
 
 app.use("/", routes);
