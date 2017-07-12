@@ -62,6 +62,16 @@ var router = express.Router();
       }).then(function(data) {
           res.redirect("/appointments");
       });
+
+        // delete request to delete an appointment
+  router.delete("/appointment/:id", function(req, res) {
+      db.Appointment.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(data) {
+          res.redirect("/appointment");
+      }); 
   });
 // export routers
 module.exports = router;

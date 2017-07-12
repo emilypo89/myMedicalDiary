@@ -46,6 +46,8 @@ var router = express.Router();
       }).then(function(data) {
           res.redirect("/medicalNotes");
       });
+
+      
   });
 // export routers
 module.exports = router;

@@ -48,6 +48,16 @@ var router = express.Router();
       }).then(function(data) {
           res.redirect("/doctors");
       });
+
+      // put request to delete a doctor
+  router.delete("/doctors/:id", function(req, res) {
+      db.Doctor.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(data) {
+          res.redirect("/doctors");
+      });  
   });
 // export routers
 module.exports = router;

@@ -40,6 +40,16 @@ var router = express.Router();
       }).then(function(data) {
           res.redirect("/todo");
       });
+
+  // delete request to delete a to do item
+  router.delete("/todo/:id", function(req, res) {
+      db.ToDo.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(data) {
+          res.redirect("/todo");
+      });     
   });
 // export routers
 module.exports = router;
