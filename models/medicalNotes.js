@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     location: DataTypes.STRING,
     content: DataTypes.TEXT,
+    category: DataTypes.STRING
   // },
   //   {
   //     // We're saying that we want our User to have medNotes
