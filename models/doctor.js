@@ -17,10 +17,7 @@ module.exports = function(sequelize, DataTypes) {
   },
     specialty: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        is: ["^[a-z]+$",'i']
-      } 
+      allowNull: true
     },
     location: {
       type: DataTypes.STRING,

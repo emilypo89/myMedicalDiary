@@ -1,49 +1,8 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Medical History</title>
-
-	<!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Link to CSS -->
-	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-	
-	<!-- Link to Google fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet">
-
-  <!-- Link to Font Awesome -->
-  <script src="https://use.fontawesome.com/5015dc676a.js"></script>
-</head>
-
-<body> --}}
-
-  <header>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
-      <a class="navbar-brand" id="navbarHeader" href="#">My Medical Diary</a>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown" class="dropdownMenu" id="dropdownLi">
-            <a class="nav-link" href="#" id="menu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" id="dropdownMenu" aria-labelledby="menu1">
-              <a class="dropdown-item" href="#">Home</a>
-              <a class="dropdown-item" href="#">My Doctors</a>
-              <hr>
-              <a class="dropdown-item" href="#">Log Out</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+ <header>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar"><img src="https://p5.zdassets.com/hc/theme_assets/187734/200050403/knowledge.png" height=75px alt="diary" id="navbarImage">
+        <a class="navbar-brand" id="navbarHeader">My Medical Diary</a>
+      </nav>
+    </header>
 
   <div class="container">
 
@@ -70,34 +29,31 @@
       	<h1 class="signUpTitle">Sign Up</h1>
       	<div class="form-group">
           <label for="inputName" class="signUpLabel">Name</label>
-          <input type="text" class="form-control" id="inputName" name="name" placeholder="Name">
+          <input type="text" class="form-control placeholder" id="inputName" name="name" placeholder="Name">
         </div>
         <div class="form-group">
           <label for="inputEmail" class="signUpLabel">Email address</label>
-          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+          <input type="email" class="form-control placeholder" id="inputEmail" name="email" placeholder="Email">
         </div>
         <div class="form-group">
           <label for="inputPassword" class="signUpLabel">Password</label>
-          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+          <input type="password" class="form-control placeholder" id="inputPassword" name="password" placeholder="Password">
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-secondary float-right" id="signUpButton">Sign Up</button>
+          <button type="submit" class="btn btn-secondary float-right regButton" id="signUpButton">Sign Up</button>
         </div>
         <br><br>
       
-        <span id="existMem">Already a member? <a href="/login">Login Here</a>
+        <span class="memberQuestion">Already a member? <a href="/users/login">Login Here</a>
         </span>
         </form>
       </div>
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">&copy; </span>
-    </div>
-  </footer>
-
-</body>
-</html>
+<footer class="footer">
+  <div class="container">
+  <span class="text-muted">&copy; Nikki Jedic, Emily Polansky, Michael Russo, Jessica Ticzon</span>
+  </div>
+</footer>
