@@ -85,7 +85,7 @@ var router = express.Router();
         title: req.body.title,
         notes: req.body.notes
       }).then(function(data){
-        res.redirect("/users/" + data.dataValues.id);
+        res.redirect("back");
       });
   });
 
@@ -105,7 +105,7 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+          res.redirect("back");
       });
     });    
 // delete request to delete an appointment
@@ -115,7 +115,10 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+          console.log(data);
+          res.redirect("back");
+      }).catch(function(err){
+          console.log(err);
       }); 
   });
 
@@ -137,28 +140,38 @@ var router = express.Router();
   // post request to add a new to do item to the list of to do items
   // redirected back the the get request to show all the to do items, including the new one on the page
   router.post("/todo/:id", function(req, res) {
+    console.log("req.query.id: " + req.query.id);
       db.ToDo.create({
         // include: [{model: db.User}],
         UserId: req.params.id,
         toDo: req.body.toDo
+        
       }).then(function(data){
           console.log(data);
-        res.redirect("/users/" + data.dataValues.id);
+
+        res.redirect('back');
       });
   });
   // put request to update the page when the to do item changes
   router.put("/todo/:id", function(req, res) {
       db.ToDo.update({
         // include: [{model: db.User}],
-        UserId: req.params.id,
+        // UserId: req.params.id,
         toDo: req.body.toDo
       }, {
-        where: {include: [{model: db.User}],
-        UserId: req.params.id,
-          id: req.params.id
+        where: 
+        {
+          id: req.params.id //id can't be same as UserId
         }
+        
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+        var cleanData = JSON.parse(JSON.stringify(data));
+          console.log("CLEAN DATA:" + cleanData);
+        var object = {
+            modal: data
+          }
+          res.redirect('back');
+          // res.redirect("/users/" + req.params.id);
       });
   });  
 
@@ -169,9 +182,12 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+
+          res.redirect('back');
       });     
   });
+
+
 
 // MEDICAL NOTES ROUTES
   // get request to show the index.handlebars on the page 
@@ -193,7 +209,7 @@ var router = express.Router();
   // redirected back the the get request to show all the medical notes, including the new one on the page
   router.post("/medicalNotes/:id", function(req, res) {
       db.MedNotes.create({
-        include: [{model: db.User}],
+        // include: [{model: db.User}],
         UserId: req.params.id,
         title: req.body.title,
         location: req.body.location,
@@ -201,13 +217,13 @@ var router = express.Router();
         category: req.body.category
  
       }).then(function(data){
-        res.redirect("/users/" + data.dataValues.id);
+        res.redirect("back");
       });
   });
   // put request to update the page when the medical notes info changes
   router.put("/medicalNotes/:id", function(req, res) {
       db.MedNotes.update({
-        include: [{model: db.User}],
+        // include: [{model: db.User}],
         UserId: req.params.id,
         title: req.body.title,
         location: req.body.location,
@@ -219,7 +235,7 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+          res.redirect("back");
       });
   });
 
@@ -229,7 +245,7 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/users/" + data.dataValues.id);
+          res.redirect("back");
       }); 
     });    
 
@@ -238,43 +254,43 @@ var router = express.Router();
  // get request to show the index.handlebars on the page 
   // shows all of the doctors items currently in the database on the page
   router.get("/users/doctors/:id", function(req, res) {
-      db.User.findAll({
+    db.User.findOne({
         include: [{model: db.Doctor}],
-        where: {
-          UserId: req.params.id
-        }
+      where: {
+        id: req.params.id
+      }
       }).then(function(data) {
-          console.log(data)    
-       res.render("doctors", {doctor: data});
+          var cleanData = JSON.parse(JSON.stringify(data));
+          console.log(cleanData)
+       res.render("doctors", {user: data});
       });
   });
-
 
 
   // post request to add a new to do item to the list of doctors
   // redirected back the the get request to show all the doctors, including the new one on the page
-  router.post("/doctors/:id", function(req, res) {
+  router.post("/users/doctors/:id", function(req, res) {
       db.Doctor.create({
-        include: [{model: db.User}],
+        // include: [{model: db.User}],
         UserId: req.params.id,
         name: req.body.name,
         phone: req.body.phone,
-        speciality: req.body.speciality,
+        specialty: req.body.specialty,
         location: req.body.location,
         notes: req.body.notes
       }).then(function(data){
-        res.redirect("/doctors");
+        res.redirect("back");
       });
   });
 
   // put request to update the page when the doctor info changes
-  router.put("/doctors/:id", function(req, res) {
+  router.put("/users/doctors/:id", function(req, res) {
       db.Doctor.update({
-        include: [{model: db.User}],
-        UserId: req.params.id,
+        // include: [{model: db.User}],
+        // UserId: req.params.id,
         name: req.body.name,
         phone: req.body.phone,
-        speciality: req.body.speciality,
+        specialty: req.body.specialty,
         location: req.body.location,
         notes: req.body.notes
       }, {
@@ -282,18 +298,18 @@ var router = express.Router();
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/doctors");
+          res.redirect("back");
       });
     });  
 
   // delete request to delete a doctor
-  router.delete("/doctors/:id", function(req, res) {
+  router.delete("/users/doctors/:id", function(req, res) {
       db.Doctor.destroy({
         where: {
           id: req.params.id
         }
       }).then(function(data) {
-          res.redirect("/doctors");
+          res.redirect("back");
       });
   });     
 

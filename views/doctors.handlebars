@@ -9,8 +9,8 @@
               <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-right" id="dropdownMenu" aria-labelledby="menu1">
-                <a class="dropdown-item" href="#">Home</a>
-                <a class="dropdown-item" href="#">My Doctors</a>
+                <a class="dropdown-item" href="/users/{{user.id}}">Home</a>
+                <a class="dropdown-item" href="/users/doctors/{{user.id}}">My Doctors</a>
                 <hr>
                 <a class="dropdown-item" href="#">Log Out</a>
               </div>
@@ -21,7 +21,7 @@
     </header>
 
 <!-- Main Row -->
-<div class="row">
+<div class="row justify-content-center">
 	
 	<!-- Doctors Section -->
 	<div class="col-md-6">
@@ -29,7 +29,7 @@
 			<h1 class="welcome">My Doctors</h1>
 			<!-- Doctors handlebars -->
 			<div id="hbDoc" role="tablist" aria-multiselectable="true">
-				{{#each Doctor}}
+				{{#each user.Doctors}}
 				
 				<div class="card">
 					<div class="card-header noteItem" role="tab" id="heading{{this.id}}">
@@ -45,10 +45,12 @@
 							<p>{{this.phone}}</p>
 							<p>{{this.location}}</p>
 							<p>Notes: {{this.notes}}</p>
-							<form class="float-right updateNote" action="/updateDoctor" method="POST">
-								<button type="submit" class="float-right updateNote" data-toggle="modal" data-target="#newApptModal"><i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button>
-								<form class="float-right updateNote" action="/updateNote" method="DELETE">
-									<button type="submit" class="float-right updateNote" data-toggle="modal" data-target="#newApptModal"><i class="fa fa-trash-o float-right" aria-hidden="true"></i></button>
+							<form class="delete float-right" action="/users/doctors/{{this.id}}?_method=DELETE" method="POST">
+              <button type="submit" class="icons float-right updateNote">
+              <i class="fa fa-trash-o float-right" aria-hidden="true"></i></button></form></span>
+
+              
+              <button type="submit" class="icons float-right updateNote" data-toggle="modal" data-target="#updtDocModal{{this.id}}"><i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button></form>
 									<br>
 								</div>
 							</div>
@@ -60,7 +62,7 @@
 					
 					
 					<!-- Add New Doctor -->
-					<button type="submit" class="btn btn-secondary float-right regButton" id="addNewDoctor" data-toggle="modal" data-target="#newDoctorModal">Add A New Doctor</button>
+					<button type="button" class="btn btn-secondary float-right regButton" id="addNewDoctor" data-toggle="modal" data-target="#newDoctorModal">Add A New Doctor</button>
 					
 					<!-- Doctor Modal -->
 					<div class="modal fade" id="newDoctorModal" tabindex="-1" role="dialog" aria-labelledby="newNote" aria-hidden="true">
@@ -73,7 +75,7 @@
 									</button>
 								</div>
 								<div class="modal-body">
-									<form class="signup" action="/doctors" method="POST">
+								  <form class="signup" action="/users/doctors/{{user.id}}" method="POST">
 										
 										<div class="form-group">
 											<label for="doctorName">Doctor's Name</label>
@@ -107,6 +109,51 @@
 						</div>
 					</div>
 					<!-- End New Doctor -->
+					<!-- UPDATE Doctor Modal -->
+					{{#each user.Doctors}}
+        <div class="modal fade" id="updtDocModal{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="newNote" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="welcome">Update Doctor</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="signup" action="/users/doctors/{{this.id}}?_method=PUT" method="POST">
+                  
+                  <div class="form-group">
+											<label for="doctorName">Doctor's Name</label>
+											<input type="text" class="form-control placeholder" name="name" id="doctorName" placeholder="Doctor's Name" value="{{this.name}}">
+										</div>
+										
+										<div class="form-group">
+											<label for="doctorSpecialty">Doctor's Specialty</label>
+											<input type="text" class="form-control placeholder" name="specialty" id="doctorSpecialty" placeholder="Doctor's Specialty" value="{{this.specialty}}">
+										</div>
+										<div class="form-group">
+											<label for="doctorPhoneNumber">Phone Number</label>
+											<input type="text" class="form-control placeholder" name="phone" id="doctorPhoneNumber" placeholder="Example: 000 000 0000" value="{{this.phone}}">
+										</div>
+										<div class="form-group">
+											<label for="doctorLocation">Doctor's Location</label>
+											<input type="text" class="form-control placeholder" name="location" id="doctorLocation" placeholder="Doctor's Location" value="{{this.location}}">
+										</div>
+										<div class="form-group">
+											<label for="doctorNotes">Any Additional Notes</label>
+											<textarea class="form-control placeholder" rows="5" name="notes" id="doctorNotes" placeholder="Notes">{{this.notes}}</textarea>
+										</div>                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary cancelButton" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-secondary regButton">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        <!-- End UPDATE NOTE modal -->
 				</div>
 			</div>
 		</div>
