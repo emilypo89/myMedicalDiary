@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+  // creating a user table
   var User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
@@ -22,6 +23,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     } 
   });
+
+  // associating the appointment, to do, medical notes, and doctor tables to the user
   User.associate = function(models){
     User.hasMany(models.Appointment)
     User.hasMany(models.ToDo)

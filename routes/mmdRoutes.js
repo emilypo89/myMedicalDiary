@@ -14,7 +14,7 @@ var router = express.Router();
     if (req.user) {
       res.render("index");
     }
-    res.render("signUp");
+    res.render("index");
   });
 
   router.get("/login", function(req, res) {

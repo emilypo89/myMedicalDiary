@@ -128,7 +128,6 @@ router.get("/todo/:id", function(req, res) {
 // Put request to update the page when the to do item changes
   router.put("/todo/:id", function(req, res) {
     db.ToDo.update({
-      // UserId: req.params.id,
       toDo: req.body.toDo
     }, {
       where: {
@@ -228,7 +227,6 @@ router.get("/todo/:id", function(req, res) {
 // Put request to update the page when the doctor info changes
   router.put("/users/doctors/:id", function(req, res) {
     db.Doctor.update({
-      UserId: req.params.id,
       name: req.body.name,
       phone: req.body.phone,
       speciality: req.body.speciality,

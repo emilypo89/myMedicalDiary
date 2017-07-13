@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var MedNotes = sequelize.define("MedNotes", {
-    // Giving the Author model a name of type STRING
+   // creating a table for the medical notes
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.STRING
   });
 
-
+// associating the medical notes table with the user table
   MedNotes.associate = function(models){
     MedNotes.belongsTo(models.User, {
       foreignKey: {

@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+  // creates a table for the to do items
   var ToDo = sequelize.define("ToDo", {
       toDo: {
         type: DataTypes.STRING,
@@ -8,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
   });
+  // associating the to do items table with the user
   ToDo.associate = function(models){
     ToDo.belongsTo(models.User, {
       foreignKey: {

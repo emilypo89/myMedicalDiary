@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Doctor = sequelize.define("Doctor", {
-    // Giving the Author model a name of type STRING
+  // Create a table of doctor
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         not: ["[a-z]",'i']
       }
   },
-    specialty: {
+    speciality: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }  
   });
-
+// associating the doctor table with the user table
   Doctor.associate = function(models){
     Doctor.belongsTo(models.User)
   }

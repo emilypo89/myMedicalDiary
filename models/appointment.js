@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
+// creates a table for appointments
   var Appointment = sequelize.define("Appointment", {
-    date: {
+  date: {
       type: DataTypes.DATEONLY,
   },
     time: {
@@ -20,6 +21,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }  
   });
+
+// associates the appointments with the user table 
   Appointment.associate = function(models){
     Appointment.belongsTo(models.User)
   }
