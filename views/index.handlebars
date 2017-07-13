@@ -9,8 +9,8 @@
               <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-right" id="dropdownMenu" aria-labelledby="menu1">
-                <a class="dropdown-item" href="/users/{{user.id}}">Home</a>
-                <a class="dropdown-item" href="/users/doctors/{{user.id}}">My Doctors</a>
+                <a class="dropdown-item" href="#">Home</a>
+                <a class="dropdown-item" href="#">My Doctors</a>
                 <hr>
                 <a class="dropdown-item" href="#">Log Out</a>
               </div>
@@ -40,15 +40,14 @@
           <ul class="toDoList">
             {{!-- <li >                 --}}
                 {{#each user.Appointments}}
-                  <li>{{this.title}}</li><br>
-                  <li>{{this.date}}</li><br>
-                  <li>{{this.time}}</li><br>
-                  <li>{{this.location}}</li><br>
-                  <li>{{this.category}}</li><br>
-                  <li>{{this.notes}}</li>
+                  <li><strong>{{this.date}}, <em>{{this.time}}</em></strong><br>
+                  {{this.title}}<br>
+                  - {{this.location}}<br>
+                  - {{this.category}}<br>
+                  {{this.notes}}
           <button type="submit" data-toggle="modal" data-target="#updtApptModal" class="icons float-right standardButton">
           <i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button>
-          <form class="delete float-right" action="/appointment/:id" method="DELETE">
+          <form class="delete float-right" action="/appointment/{{this.id}}?_method=DELETE" method="POST">
             <button type="submit" class="float-right standardButton">
           <i class="fa fa-trash-o float-right" aria-hidden="true"></i></button></span>
         {{!-- </li> --}}
@@ -69,7 +68,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="signup" action="/appointment/{{user.id}}" method="POST">
+        <form class="signup" action="/appointments/{{user.id}}" method="POST">
           
           <div class="form-group">
             <label for="apptDate">Date</label>
@@ -90,7 +89,7 @@
           </div>
           <div class="form-group">
             <label for="apptNotes">Notes</label>
-            <textarea class="form-control placeholder" rows="5" id="apptNotes" name="content" placeholder="Notes"></textarea>
+            <textarea class="form-control placeholder" rows="5" id="apptNotes" name="notes" placeholder="Notes"></textarea>
           </div>
           <div class="form-group">
             <label for="exampleSelect1">Category</label>
@@ -182,15 +181,16 @@
               {{this.title}}
             </a>
             </h5>
-            {{this.date}}, {{this.location}}<br>
-            {{this.category}}
+            {{this.createdAt}}<br>
+            {{this.location}}<br>
+            <i>{{this.category}}</i>
           </div>
           <div id="note{{this.id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{this.id}}">
             <div class="card-block">
               <p>{{this.content}}</p>
-              <form class="float-right updateNote" action="/medicalNotes/{{user.id}}" method="POST">
+             
                 <button type="submit" class="icons float-right standardButton updateNote" data-toggle="modal" data-target="#updtNoteModal"><i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button>
-                <form class="delete float-right" action="/medicalNotes?_method=DELETE" method="POST">
+                <form class="delete float-right" action="/medicalNotes/{{this.id}}?_method=DELETE" method="POST">
                   <button type="submit" class="icons float-right standardButton">
                 <i class="fa fa-trash-o float-right" aria-hidden="true"></i></button></form></span>
                 <br>
@@ -234,7 +234,7 @@
                   </div>
                   <div class="form-group">
                     <label for="noteCategory">Category</label>
-                    <select class="form-control placeholder" id="noteCategory">
+                    <select class="form-control placeholder" id="noteCategory" name="category">
                       <option>Hospital</option>
                       <option>Check Up</option>
                       <option>Follow Up Visit</option>
@@ -262,6 +262,7 @@
                 </button>
               </div>
               <div class="modal-body">
+
                 <form class="signup" action="/medicalNotes/{{user.id}}?_method=PUT" method="POST">
                   
                   <div class="form-group">
@@ -308,7 +309,7 @@
           <div class="form-group" id="toDoDiv">
             
             <label class="sr-only" for="newToDo">New To Do</label>
-            <input class="form-control placeholder" type="text" placeholder="New To-Do" id="newToDo">
+            <input class="form-control placeholder" type="text" placeholder="New To-Do" id="newToDo" name="toDo">
           </div>
           <button type="submit" class="btn btn-secondary toDoButtons">Add</button>
         </form>
@@ -318,10 +319,12 @@
           <li class="list-group-item todo-item">
             <span style="display: inline;">{{this.toDo}}
               
-              <form class="delete float-right" action="/appointment/:id" method="DELETE">
+              <form class="delete float-right" action="/todo/{{this.id}}" method="DELETE">
               <button type="submit" class="icons float-right updateNote">
               <i class="fa fa-trash-o float-right" aria-hidden="true"></i></button></form></span>
-              <button type="submit" class="icons float-right updateNote" data-toggle="modal" data-target="#updtToDoModal"><i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button>
+
+              <form action="/todo/{{this.id}}" method="GET">
+              <button type="submit" class="icons float-right updateNote" data-toggle="modal" data-target="#updtToDoModal" value="{{this.id}}"><i class="fa fa-pencil-square-o float-right" aria-hidden="true"></i></button></form>
              
             </li>
             {{/each}}
@@ -338,15 +341,16 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  
-                  <form class="form-inline" action="/todo/{{user.id}}?_method=PUT" method="POST">
+                  {{#each user.ToDos}}
+                  <form class="form-inline" action="/todo/{{this.id}}?_method=PUT" method="POST">
                     <div class="form-group" id="toDoDiv">
                       
                       <label class="sr-only" for="newToDo"></label>
-                      <input class="form-control" type="text" id="newToDo" name="todo">
+                      <input class="form-control" type="text" id="newToDo" value="{{this.toDo}}" name="toDo">
                     </div>
                     <button type="submit" class="btn btn-secondary toDoButtons">Update</button>
                   </form>
+                  {{/each}}
                 </div>
               </div>
             </div>
