@@ -10,6 +10,10 @@ var router = express.Router();
        res.render("signUp");
   });
 
+  router.get("/users/login", function(req, res) {
+       res.render("signIn");
+  });
+
   router.post("/users", function(req, res) {
       db.User.create({
         name: req.body.name,
