@@ -50,6 +50,8 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(models.Appointment)
     User.hasMany(models.ToDo)
     User.hasMany(models.MedNotes)
+    User.hasMany(models.Doctor)
+
   }
 
   // User.associate = function(models){
