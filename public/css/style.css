@@ -11,9 +11,12 @@ body {
 	color: #003b46;
 	margin-bottom: 60px;
 }
-.container{
+
+
+#mainContainer{
 	min-height: 100%;
-	margin-bottom: -20px;
+	/*margin-top: 10%;*/
+	margin-bottom: 90px;
 }
 
 /*Navbar*/
